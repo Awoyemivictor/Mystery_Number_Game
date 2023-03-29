@@ -8,3 +8,4 @@ It will iterate from 1 to 5 if the player selects hard level since there are onl
 <li>Once the number entered matches the secret number, the player will be notified that he has won. </li>
 <li>The game ends if the player cannot guess the number and he or she has no more choices left. This terminates the game. </li>
 </ul>
+<a href="https://www.canva.com/design/DAFenH2kgl4/ic3ZTD0uT9sRPseBOTKgOg/view?utm_content=DAFenH2kgl4&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink">Mystery Game Presentation</a>

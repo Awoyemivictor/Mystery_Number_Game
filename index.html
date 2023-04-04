@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>local modules</title>
+    <!-- linking to PyScript assets -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2022.12.1/pyscript.css" />
+    <script defer src="https://pyscript.net/releases/2022.12.1/pyscript.js"></script> 
+  </head>
+  <body>
+      <main class="container h-screen flex flex-col items-center justify-center">
+          <div id="output" class="text-3xl"></div>
+          <button id="shuffle" class="mt-4 p-2 text-white bg-blue-600 rounded" pys-onClick="shuffle_array">Shuffle</button>
+      </main>
+      <py-script src="./main.py"></py-script>
+  </body>
+</html>

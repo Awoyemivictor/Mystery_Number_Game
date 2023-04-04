@@ -1,15 +1,19 @@
+import streamlit as st
 from PIL import Image
 import requests
-import streamlit as st
 from streamlit_lottie import st_lottie
 
-# import random as r
-
-import game
-
-
-
 st.set_page_config(page_title="Mystery Number Game", page_icon=":tada:", layout="wide")
+
+st.markdown("""
+<style>
+.css-1rvg65o.edgvbvh3
+{
+    visibility: hidden;
+}
+</style>
+""", unsafe_allow_html=True)
+
 
 def load_lottieurl(url):
     r = requests.get(url)
@@ -24,65 +28,9 @@ def local_css(file_name):
 
 local_css("style/style.css")
 
-
-# Game
-# def guessGame():
-#     # st.header("Enter the difficulty level: \n")
-#     # st.write("1 for easy!\t")
-#     # st.write("2 for medium!\t")
-#     # st.write("3 for difficult!\t")
-#     # st.write("0 for ending the game!\n")
-
-#     # // select the level of difficulty
-#     # difficultChoice = input("Enter the number: ")
-    
-    
-#     # // generating the secret number
-#     # list = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-
-
-#     user_name = input('Type your name : ').title()
-#     print(f'Hello {user_name}.')
-
-#     user_said = input(f'{user_name} do you want to play Number Guessing game (Y/N) : ').lower()
-
-#     while True:
-
-#         if ('y' not in user_said) and ('n' not in user_said) and (user_said != True):
-#             user_said = input('Invalid keyword\nType again : ').lower()
-
-#         elif 'y' in user_said:
-#             winning_number = r.randint(1,10)
-#             user_guessed = int(input('\nYou have 6 guesses.\nGuess any number between 1 and 10\nGuess the number : '))
-#             turn = 1
-
-#             while True:
-            
-#                 if winning_number == user_guessed:
-#                     print(f'Congrats you guessed the number in {turn} times.')
-#                     break
-
-#                 elif turn == 6:
-#                     print(f'Sorry You can\'t guess the number. The number is {winning_number}.')
-#                     break
-
-#                 else:
-#                     if winning_number > user_guessed:
-#                         print('Too Low')
-#                     else:
-#                         print('Too High')
-
-#                     print(f'You have {6-turn} guesses left.')
-#                     turn += 1
-#                     user_guessed = int(input('Guess again : '))
-
-#             user_said = input(f'\n{user_name} do you want to play more (Y/N) : ')
-
-#         else:
-#             print(f'\nOk Bye {user_name}. See You soon.')
-#             break
-
-
+# game function
+def guess():
+    name = st.text_input("First name")
 
 
 # LOAD ASSETS ----
@@ -96,7 +44,8 @@ with st.container():
     st.title("Welcome to Mystery Number Game!")
     st.write("All you have to do is to choose a Level and Guess the right number from 1 to 30. If you win, you stand a chance to earn a mystery coin. You will have limited choices based on the level you choose. There are 3 levels in the Mystery Number Game:")
     st.write("1 for EASY! | 2 for MEDIUM! | 3 for DIFFICULT!")
-    st.write("[PLAY NOW >](https://www.awoyemivictor.info)")
+    # result=st.button(label, key=None, help=None, on_click=gamemy)    
+    # st.write(result)
 
 # WHAT I DO
 with st.container():
@@ -115,6 +64,38 @@ with st.container():
         )
     with right_column:
         st_lottie(lottie_coding, height=300, key="coding")
+
+
+
+# ----- FILE UPLOADING -----
+
+with st.container():
+    st.write("---")
+    st.write("##")
+
+    st.markdown("<h2>Player Registration</h2>", unsafe_allow_html=True)
+    with st.form("Form 2", clear_on_submit=True):
+        col1,col2=st.columns(2)
+        f_name=col1.text_input("Full Name")
+        e_mail=st.text_input("Email Address")
+        s_state=st.form_submit_button("submit")
+        if s_state:
+            if f_name == "" and e_mail == "":
+                st.warning("Please fill above fields")
+            else:
+                st.success("Submitted successfully")
+
+
+ 
+
+    # left_column, right_column = st.columns(2)
+    # with left_column:
+    #     st.markdown(st.form, unsafe_allow_html=True)
+    # with right_column:
+    #     images=st.file_uploader("Please upload an image", type=["png","jpg"], accept_multiple_files=True)
+    #     if images is not None:
+    #         for image in images:
+    #             st.image(images)
 
 
 # PROJECTS ---
@@ -147,6 +128,8 @@ with st.container():
             st.markdown("[WEBSITE](https://awoyemivictor.info)")
 
 
+
+
 # ----CONTACT-----
 with st.container():
     st.write("---")
@@ -172,6 +155,7 @@ with st.container():
 
 
 
-#--GAME
-with st.container():
-    st_lottie(game, height=300, key="coding")
+
+
+
+

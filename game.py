@@ -1,6 +1,6 @@
 import random as r
 
-st.set_page_config(page_title="Mystery Number Game", page_icon=":tada:", layout="wide")
+# st.set_page_config(page_title="Mystery Number Game", page_icon=":tada:", layout="wide")
 
 def gamemy():
     user_name = input('Type your name : ').title()

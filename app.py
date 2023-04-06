@@ -3,6 +3,9 @@ from PIL import Image
 import requests
 from streamlit_lottie import st_lottie
 
+from subprocess import call
+import sys
+
 st.set_page_config(page_title="Mystery Number Game", page_icon=":tada:", layout="wide")
 
 st.markdown("""
@@ -13,6 +16,12 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
+
+# button1 = st.button("click me")
+
+# if button1:
+#     subprocess.run([f"{sys.executable}", "/game.py"])
+#     st.write("finished")
 
 
 def load_lottieurl(url):
@@ -28,10 +37,6 @@ def local_css(file_name):
 
 local_css("style/style.css")
 
-# game function
-def guess():
-    name = st.text_input("First name")
-
 
 # LOAD ASSETS ----
 lottie_coding = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_wXdFmB.json")
@@ -46,6 +51,8 @@ with st.container():
     st.write("1 for EASY! | 2 for MEDIUM! | 3 for DIFFICULT!")
     # result=st.button(label, key=None, help=None, on_click=gamemy)    
     # st.write(result)
+    
+
 
 # WHAT I DO
 with st.container():
@@ -67,23 +74,6 @@ with st.container():
 
 
 
-# ----- FILE UPLOADING -----
-
-with st.container():
-    st.write("---")
-    st.write("##")
-
-    st.markdown("<h2>Player Registration</h2>", unsafe_allow_html=True)
-    with st.form("Form 2", clear_on_submit=True):
-        col1,col2=st.columns(2)
-        f_name=col1.text_input("Full Name")
-        e_mail=st.text_input("Email Address")
-        s_state=st.form_submit_button("submit")
-        if s_state:
-            if f_name == "" and e_mail == "":
-                st.warning("Please fill above fields")
-            else:
-                st.success("Submitted successfully")
 
 
  
